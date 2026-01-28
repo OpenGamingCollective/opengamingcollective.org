@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -192,7 +192,9 @@
         border: 1px solid var(--border);
         display: flex;
         flex-direction: column;
-        transition: transform 0.3s ease, border-color 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease;
       }
       .card:hover {
         border-color: var(--accent);
@@ -355,254 +357,279 @@
     </header>
 
     <main class="container">
+      <section id="hero">
+        <br />
+        <h1>Leveling Up the Ecosystem, <span>Together.</span></h1>
+        <p class="lead-text">
+          The <strong>Open Gaming Collective (OGC)</strong> is building a
+          <strong>unified</strong> set of gaming-focused components used across
+          the Linux ecosystem.
+        </p>
+      </section>
 
-        <section id="hero">
-            <br>
-          <h1>Leveling Up the Ecosystem, <span>Together.</span></h1>
-          <p class="lead-text">
-            The <strong>Open Gaming Collective (OGC)</strong> is building a <strong>unified</strong> set of gaming-focused components used across the Linux ecosystem.
-          </p>
-        </section>
+      <section id="about">
+        <h2>The Mission</h2>
+        <p>
+          For too long, the Linux gaming ecosystem has been fragmented.
+          Individual distributions have spent countless hours duplicating
+          efforts on kernel patches, input tooling, and essential packages. The
+          OGC changes the game by centralizing efforts around critical
+          components like
+          <a href="https://github.com/ValveSoftware/gamescope" target="_blank"
+            ><code>Gamescope</code></a
+          >
+          and hardware drivers.
+        </p>
 
-        <section id="about">
-          <h2>The Mission</h2>
+        <aside class="highlight-box">
           <p>
-            For too long, the Linux gaming ecosystem has been fragmented.
-            Individual distributions have spent countless hours duplicating
-            efforts on kernel patches, input tooling, and essential packages.
-            The OGC changes the game by centralizing efforts around critical
-            components like <a href="https://github.com/ValveSoftware/gamescope" target="_blank"><code>Gamescope</code></a> and hardware drivers.
+            <em
+              >"Distros can now focus on the features and experience that make
+              them unique, rather than repeating the tasks that are the same. In
+              short: we all have <strong>more time to game.</strong>"</em
+            >
           </p>
+        </aside>
+      </section>
 
-          <aside class="highlight-box">
-            <p>
-              <em
-                >"Distros can now focus on the features and experience that make
-                them unique, rather than repeating the tasks that are the same.
-                In short: we all have <strong>more time to game.</strong>"</em
+      <section id="members">
+        <h2>Founding Members</h2>
+        <div class="member-grid">
+          <div class="card">
+            <h3>
+              <a href="https://bazzite.gg/" target="_blank"
+                >Universal Blue & Bazzite</a
               >
+            </h3>
+            <p class="statement">
+              We think the future of Linux Gaming is a collaborative effort
+              forged in mutual interest and friendship and want to do our part
+              to make that happen!
             </p>
-          </aside>
-        </section>
-
-        <section id="members">
-          <h2>Founding Members</h2>
-          <div class="member-grid">
-            <div class="card">
-              <h3>
-                <a href="https://bazzite.gg/" target="_blank"
-                  >Universal Blue & Bazzite</a
-                >
-              </h3>
-              <p class="statement">
-                We think the future of Linux Gaming is a collaborative effort
-                forged in mutual interest and friendship and want to do our part
-                to make that happen!
-              </p>
-              <div class="member-list">
-                <span class="list-label">Represented by:</span>
-                <a href="https://github.com/KyleGospo" class="member-tag"
-                  >Kyle Gospodnetich</a
-                >
-                <a href="https://github.com/hikariknight" class="member-tag"
-                  >Hikari</a
-                >
-                                <a href="https://github.com/noelmiller" class="member-tag"
-                  >Noel Miller</a
-                >
-                                <a href="https://github.com/tulilirockz" class="member-tag"
-                  >Tulip Blossom</a
-                >
-              </div>
-            </div>
-
-            <div class="card">
-              <h3>
-                <a href="https://asus-linux.org/" target="_blank">ASUS Linux</a>
-              </h3>
-              <p class="statement">
-                Our team focuses on Linux for many ASUS hardware. In being part
-                of OGC, we aim to provide seamless, high-quality, and early
-                support for users and developers while collaborating with others
-                and reducing fragmentation. In doing so, we more closely bridge
-                the gap between enthusiast hardware and the mainline kernel.
-              </p>
-              <div class="member-list">
-                <span class="list-label">Represented by:</span>
-                <a href="https://github.com/NeroReflex" class="member-tag"
-                  >NeroReflex</a
-                >
-                <a href="https://github.com/kojq" class="member-tag">Sukiru</a>
-                <a href="https://github.com/dragonnn" class="member-tag"
-                  >Dragonn</a
-                >
-                <a href="https://github.com/Ghoul4500" class="member-tag"
-                  >Ghoul</a
-                >
-              </div>
-            </div>
-
-            <div class="card">
-              <h3>
-                <a href="http://shadowblip.org/" target="_blank">ShadowBlip</a>
-              </h3>
-              <p class="statement">
-                ShadowBlip is a collection of developers focused on enhancing
-                gaming on Linux with handheld and console-like PCs. Our projects
-                are used in many popular gaming distributions such as SteamOS,
-                Nobara, Playtron, and more. As founding members of the Open
-                Gaming Collective, we focus on delivering projects that benefit
-                the whole gaming on Linux ecosystem.
-              </p>
-              <div class="member-list">
-                <span class="list-label">Represented by:</span>
-                <a href="https://github.com/ShadowApex" class="member-tag"
-                  >ShadowApex</a
-                >
-                <a href="https://github.com/pastaq" class="member-tag"
-                  >pastaq</a
-                >
-                <a href="https://github.com/samsagax" class="member-tag"
-                  >Samsagax</a
-                >
-              </div>
-            </div>
-
-            <div class="card">
-              <h3><a href="https://pika-os.com/" target="_blank">PikaOS</a></h3>
-              <p class="statement">
-                One of our goals at Pika is to improve gaming accessibility and
-                performance on Linux, with a particular focus on better support
-                and representation for Debian-based distributions within the
-                gaming ecosystem. The OGC is a great place to further these
-                goals and really maximise and contribute to the great work done
-                by Linux gaming community as a whole.
-              </p>
-              <div class="member-list">
-                <span class="list-label">Represented by:</span>
-                <a href="https://github.com/ferrreo" class="member-tag"
-                  >Ferreo</a
-                >
-                <a href="https://github.com/sythezn" class="member-tag"
-                  >SytheZN</a
-                >
-              </div>
-            </div>
-
-            <div class="card">
-              <h3>
-                <a href="https://fyralabs.com/" target="_blank">Fyra Labs</a>
-              </h3>
-              <p class="statement">
-                Fyra wants to help bring gaming components to the Fedora
-                ecosystem, and a more performant kernel to our Ultramarine users.
-              </p>
-              <div class="member-list">
-                <span class="list-label">Represented by:</span>
-                <a href="https://github.com/lleyton" class="member-tag"
-                  >Lleyton Gray</a
-                >
-                <a href="https://github.com/GildedRoach" class="member-tag"
-                  >Gilver Eckhart</a
-                >
-                <a href="https://github.com/Owen-sz" class="member-tag"
-                  >Owen Zimmerman</a
-                >
-                <a href="https://github.com/madomado" class="member-tag"
-                  >Madomado</a
-                >
-                <a href="https://github.com/zackerthescar" class="member-tag"
-                  >Riley Loo</a
-                >
-                <a href="https://github.com/riley" class="member-tag"
-                  >Jaiden Riordan</a
-                >
-                <a href="https://github.com/korewaChino" class="member-tag"
-                  >Cappy Ishihara</a
-                >
-              </div>
-            </div>
-
-            <div class="card full-width">
-              <h3>Strategic Partners & Core Contributors</h3>
-              <p
-                class="statement"
-                style="font-style: normal; margin-bottom: 1.5rem"
+            <div class="member-list">
+              <span class="list-label">Represented by:</span>
+              <a href="https://github.com/KyleGospo" class="member-tag"
+                >Kyle Gospodnetich</a
               >
-                Collaborating with <strong>ChimeraOS</strong>,
-                <strong>Nobara</strong>, and <strong>Playtron</strong> to maintain the core plumbing of the
-                ecosystem.
-              </p>
-              <div class="member-list">
-                <a href="https://github.com/GloriousEggroll" class="member-tag"
-                  >GloriousEggroll</a
-                >
-                <a href="https://github.com/superm1" class="member-tag"
-                  >superm1</a
-                >
-                <a href="https://github.com/hphilm" class="member-tag"
-                  >hphilm</a
-                >
-                <a href="https://github.com/justinweiss" class="member-tag"
-                  >justinweiss</a
-                >
-                <a href="https://github.com/LukeShortCloud" class="member-tag"
-                  >LukeShortCloud</a
-                >
-                <a href="https://github.com/ruineka" class="member-tag"
-                  >ruineka</a
-                >
-                <a href="https://github.com/JustRadical" class="member-tag"
-                  >JustRadical</a
-                >
-                <a href="https://github.com/R1kaB3rN" class="member-tag"
-                  >R1kaB3rN</a
-                >
-                <a href="https://github.com/xXJSONDeruloXx" class="member-tag"
-                  >xXJSONDeruloXx</a
-                >
-                <a href="https://github.com/LionHeartP" class="member-tag"
-                  >LionHeartP</a
-                >
-                <a href="https://github.com/alkazar" class="member-tag"
-                  >Alesh Slovak</a
-                >
-                <a href="https://github.com/boukehaarsma23" class="member-tag"
-                  >bouhaa</a
-                >
-              </div>
+              <a href="https://github.com/hikariknight" class="member-tag"
+                >Hikari</a
+              >
+              <a href="https://github.com/noelmiller" class="member-tag"
+                >Noel Miller</a
+              >
+              <a href="https://github.com/tulilirockz" class="member-tag"
+                >Tulip Blossom</a
+              >
             </div>
           </div>
-        </section>
 
-        <section id="projects">
-          <h2>Shared Technical Pillars</h2>
-          <p>
-            The OGC maintains the plumbing so you can enjoy the play. Our shared
-            efforts focus on:
-          </p>
-          <ul class="custom-list">
-            <li>
-              <strong>Input Management</strong> — <a href="https://github.com/ShadowBlip/InputPlumber" target="_blank"><code>InputPlumber</code></a> and
-              <a href="https://github.com/ShadowBlip/OpenGamepadUI" target="_blank"><code>OpenGamepadUI</code></a> provide a unified controller experience
-              across all handhelds.
-            </li>
-            <li>
-              <strong>Power Tuning</strong> —
-              <a href="https://github.com/ShadowBlip/PowerStation" target="_blank"><code>PowerStation</code></a> integration for precise thermal and TDP
-              control.
-            </li>
-            <li>
-              <strong>OGC Kernel (Soon™)</strong> — A <a href="https://github.com/OpenGamingCollective/linux" target="_blank"><code>Custom Kernel</code></a> launching in member distros soon!
-            </li>
-            <li>
-              <strong>Graphics Stack</strong> — Centralized maintenance of
-              <a href="https://gitlab.freedesktop.org/mesa" target="_blank"><code>Mesa</code></a> and <a href="https://github.com/ValveSoftware/gamescope" target="_blank"><code>Gamescope</code></a> for maximum frame
-              rates.
-            </li>
-          </ul>
-        </section>
-      </article>
+          <div class="card">
+            <h3>
+              <a href="https://asus-linux.org/" target="_blank">ASUS Linux</a>
+            </h3>
+            <p class="statement">
+              Our team focuses on Linux for many ASUS hardware. In being part of
+              OGC, we aim to provide seamless, high-quality, and early support
+              for users and developers while collaborating with others and
+              reducing fragmentation. In doing so, we more closely bridge the
+              gap between enthusiast hardware and the mainline kernel.
+            </p>
+            <div class="member-list">
+              <span class="list-label">Represented by:</span>
+              <a href="https://github.com/NeroReflex" class="member-tag"
+                >NeroReflex</a
+              >
+              <a href="https://github.com/kojq" class="member-tag">Sukiru</a>
+              <a href="https://github.com/dragonnn" class="member-tag"
+                >Dragonn</a
+              >
+              <a href="https://github.com/Ghoul4500" class="member-tag"
+                >Ghoul</a
+              >
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>
+              <a href="http://shadowblip.org/" target="_blank">ShadowBlip</a>
+            </h3>
+            <p class="statement">
+              ShadowBlip is a collection of developers focused on enhancing
+              gaming on Linux with handheld and console-like PCs. Our projects
+              are used in many popular gaming distributions such as SteamOS,
+              Nobara, Playtron, and more. As founding members of the Open Gaming
+              Collective, we focus on delivering projects that benefit the whole
+              gaming on Linux ecosystem.
+            </p>
+            <div class="member-list">
+              <span class="list-label">Represented by:</span>
+              <a href="https://github.com/ShadowApex" class="member-tag"
+                >ShadowApex</a
+              >
+              <a href="https://github.com/pastaq" class="member-tag">pastaq</a>
+              <a href="https://github.com/samsagax" class="member-tag"
+                >Samsagax</a
+              >
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>
+              <a href="https://pika-os.com/" target="_blank">PikaOS</a>
+            </h3>
+            <p class="statement">
+              One of our goals at Pika is to improve gaming accessibility and
+              performance on Linux, with a particular focus on better support
+              and representation for Debian-based distributions within the
+              gaming ecosystem. The OGC is a great place to further these goals
+              and really maximise and contribute to the great work done by Linux
+              gaming community as a whole.
+            </p>
+            <div class="member-list">
+              <span class="list-label">Represented by:</span>
+              <a href="https://github.com/ferrreo" class="member-tag">Ferreo</a>
+              <a href="https://github.com/sythezn" class="member-tag"
+                >SytheZN</a
+              >
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>
+              <a href="https://fyralabs.com/" target="_blank">Fyra Labs</a>
+            </h3>
+            <p class="statement">
+              Fyra Labs was founded on the mission to bring desktop Linux to the
+              everyday person. We believe that the growing popularity of Linux
+              gaming is beneficial to that goal. Through our founding
+              involvement in OGC, we hope to accelerate the adoption of gaming
+              on Linux, advancing our core mission.
+            </p>
+            <div class="member-list">
+              <span class="list-label">Represented by:</span>
+              <a href="https://github.com/lleyton" class="member-tag"
+                >Lleyton Gray</a
+              >
+              <a href="https://github.com/GildedRoach" class="member-tag"
+                >Gilver Eckhart</a
+              >
+              <a href="https://github.com/Owen-sz" class="member-tag"
+                >Owen Zimmerman</a
+              >
+              <a href="https://github.com/madomado" class="member-tag"
+                >Madomado</a
+              >
+              <a href="https://github.com/zackerthescar" class="member-tag"
+                >Riley Loo</a
+              >
+              <a href="https://github.com/riley" class="member-tag"
+                >Jaiden Riordan</a
+              >
+              <a href="https://github.com/korewaChino" class="member-tag"
+                >Cappy Ishihara</a
+              >
+            </div>
+          </div>
+
+          <div class="card full-width">
+            <h3>Strategic Partners & Core Contributors</h3>
+            <p
+              class="statement"
+              style="font-style: normal; margin-bottom: 1.5rem"
+            >
+              Collaborating with <strong>ChimeraOS</strong>,
+              <strong>Nobara</strong>, and <strong>Playtron</strong> to maintain
+              the core plumbing of the ecosystem.
+            </p>
+            <div class="member-list">
+              <a href="https://github.com/GloriousEggroll" class="member-tag"
+                >GloriousEggroll</a
+              >
+              <a href="https://github.com/superm1" class="member-tag"
+                >superm1</a
+              >
+              <a href="https://github.com/hphilm" class="member-tag">hphilm</a>
+              <a href="https://github.com/justinweiss" class="member-tag"
+                >justinweiss</a
+              >
+              <a href="https://github.com/LukeShortCloud" class="member-tag"
+                >LukeShortCloud</a
+              >
+              <a href="https://github.com/ruineka" class="member-tag"
+                >ruineka</a
+              >
+              <a href="https://github.com/JustRadical" class="member-tag"
+                >JustRadical</a
+              >
+              <a href="https://github.com/R1kaB3rN" class="member-tag"
+                >R1kaB3rN</a
+              >
+              <a href="https://github.com/xXJSONDeruloXx" class="member-tag"
+                >xXJSONDeruloXx</a
+              >
+              <a href="https://github.com/LionHeartP" class="member-tag"
+                >LionHeartP</a
+              >
+              <a href="https://github.com/alkazar" class="member-tag"
+                >Alesh Slovak</a
+              >
+              <a href="https://github.com/boukehaarsma23" class="member-tag"
+                >bouhaa</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Shared Technical Pillars</h2>
+        <p>
+          The OGC maintains the plumbing so you can enjoy the play. Our shared
+          efforts focus on:
+        </p>
+        <ul class="custom-list">
+          <li>
+            <strong>Input Management</strong> —
+            <a href="https://github.com/ShadowBlip/InputPlumber" target="_blank"
+              ><code>InputPlumber</code></a
+            >
+            and
+            <a
+              href="https://github.com/ShadowBlip/OpenGamepadUI"
+              target="_blank"
+              ><code>OpenGamepadUI</code></a
+            >
+            provide a unified controller experience across all handhelds.
+          </li>
+          <li>
+            <strong>Power Tuning</strong> —
+            <a href="https://github.com/ShadowBlip/PowerStation" target="_blank"
+              ><code>PowerStation</code></a
+            >
+            integration for precise thermal and TDP control.
+          </li>
+          <li>
+            <strong>OGC Kernel (Soon™)</strong> — A
+            <a
+              href="https://github.com/OpenGamingCollective/linux"
+              target="_blank"
+              ><code>Custom Kernel</code></a
+            >
+            launching in member distros soon!
+          </li>
+          <li>
+            <strong>Graphics Stack</strong> — Centralized maintenance of
+            <a href="https://gitlab.freedesktop.org/mesa" target="_blank"
+              ><code>Mesa</code></a
+            >
+            and
+            <a href="https://github.com/ValveSoftware/gamescope" target="_blank"
+              ><code>Gamescope</code></a
+            >
+            for maximum frame rates.
+          </li>
+        </ul>
+      </section>
     </main>
 
     <footer class="site-footer mesh-bg">

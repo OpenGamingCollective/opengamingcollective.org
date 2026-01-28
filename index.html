@@ -1,1 +1,321 @@
-Hello world!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Gaming Collective | The Future of Linux Gaming</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <style>
+        /* --- Variables --- */
+        :root {
+            --bg: #ffffff;
+            --text: #2d3436;
+            --text-muted: #636e72;
+            --accent: #6c5ce7;
+            --accent-glow: rgba(108, 92, 231, 0.15);
+            --accent-soft: rgba(108, 92, 231, 0.05);
+            --card-bg: #f8f9fa;
+            --border: #edf2f7;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0a0a0e;
+                --text: #e2e8f0;
+                --text-muted: #94a3b8;
+                --accent: #00f2ff;
+                --accent-glow: rgba(0, 242, 255, 0.12);
+                --accent-soft: rgba(0, 242, 255, 0.05);
+                --card-bg: #111118;
+                --border: #1e1e26;
+            }
+        }
+
+        /* --- Global Resets --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+
+        /* --- Animated Mesh Engine --- */
+        .mesh-bg {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--bg);
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0l20 20-20 20L0 20z' fill='none' stroke='%23888' stroke-width='0.5' stroke-opacity='0.1'/%3E%3C/svg%3E");
+        }
+
+        .mesh-bg::after {
+            content: "";
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 60%);
+            pointer-events: none;
+            animation: mesh-sweep 10s ease-in-out infinite;
+        }
+
+        @keyframes mesh-sweep {
+            0%, 100% { transform: translate(-10%, -10%); }
+            50% { transform: translate(10%, 10%); }
+        }
+
+        /* --- Header & Logo --- */
+        .site-header {
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+            position: sticky; top: 0; z-index: 100;
+            backdrop-filter: blur(12px);
+            background: rgba(var(--bg), 0.8);
+        }
+
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.6rem; font-weight: 800; letter-spacing: -1px; }
+        .blink { color: var(--accent); animation: cursor-blink 1s step-end infinite; }
+        @keyframes cursor-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+        /* --- Typography --- */
+        .post-meta { margin-block: 4rem 1.5rem; font-size: 0.9rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+        .separator { margin: 0 0.5rem; opacity: 0.3; }
+
+        h1 { font-size: clamp(2.5rem, 8vw, 4rem); line-height: 1.1; margin-bottom: 2rem; letter-spacing: -2px; }
+        h1 span { color: var(--accent); }
+
+        h2 { font-size: 2rem; margin-block: 5rem 2.5rem; display: flex; align-items: center; gap: 1.5rem; letter-spacing: -0.5px; }
+        h2::after { content: ""; height: 1px; flex-grow: 1; background: var(--border); }
+
+        .lead-text { font-size: 1.3rem; line-height: 1.5; color: var(--text-muted); max-width: 80ch; margin-bottom: 2rem; }
+
+        /* --- Member Grid & Cards --- */
+        .member-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .card { 
+            background: var(--card-bg); 
+            padding: 2.5rem; 
+            border-radius: 24px; 
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .card:hover { border-color: var(--accent); transform: translateY(-4px); }
+        .card.full-width { grid-column: 1 / -1; }
+        
+        .card h3 { margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 800; }
+        .card h3 a { color: var(--text); }
+        .card h3 a:hover { color: var(--accent); }
+
+        .statement { 
+            font-size: 1rem; 
+            margin-bottom: 2rem; 
+            color: var(--text-muted); 
+            line-height: 1.7;
+            font-style: italic;
+            border-left: 3px solid var(--accent-glow);
+            padding-left: 1rem;
+        }
+
+        /* --- Member Tags --- */
+        .member-list { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-top: auto; }
+        .list-label { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; text-transform: uppercase; color: var(--accent); width: 100%; margin-bottom: 0.5rem; font-weight: 800; }
+        
+        .member-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+            background: var(--border);
+            border-radius: 8px;
+            color: var(--text) !important;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+        .member-tag:hover {
+            background: var(--accent-glow);
+            border-color: var(--accent);
+            color: var(--accent) !important;
+        }
+
+        /* --- Project List --- */
+        .custom-list { list-style: none; margin-block: 3rem; }
+        .custom-list li { position: relative; padding-left: 3rem; margin-bottom: 2rem; font-size: 1.1rem; }
+        .custom-list li::before {
+            content: ""; position: absolute; left: 0.5rem; top: 0.6rem;
+            width: 10px; height: 10px; background: var(--accent);
+            transform: rotate(45deg); box-shadow: 0 0 15px var(--accent);
+        }
+
+        .highlight-box {
+            margin-block: 4rem; padding: 2.5rem;
+            background: var(--accent-soft);
+            border-radius: 20px; border-left: 6px solid var(--accent);
+        }
+
+        /* --- Footer --- */
+        .site-footer { margin-top: 10rem; padding: 6rem 0; border-top: 1px solid var(--border); text-align: center; }
+        .footer-brand { font-weight: 800; text-transform: uppercase; font-size: 0.8rem; color: var(--text-muted); letter-spacing: 2px; }
+        .github-btn { 
+            display: inline-block; margin-top: 2rem; padding: 0.8rem 2rem; 
+            background: var(--text); color: var(--bg) !important; 
+            border-radius: 50px; font-weight: 600; transition: transform 0.2s;
+        }
+        .github-btn:hover { transform: scale(1.05); }
+
+        a { color: var(--accent); text-decoration: none; transition: 0.2s; }
+        code { font-family: 'JetBrains Mono', monospace; background: var(--accent-glow); padding: 0.2rem 0.4rem; border-radius: 4px; color: var(--accent); font-size: 0.9em; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .member-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header mesh-bg">
+        <nav class="container">
+            <div class="logo">OGC<span class="blink">_</span></div>
+            <ul class="nav-links">
+                <li><a href="#about">Mission</a></li>
+                <li><a href="#members">Collective</a></li>
+                <li><a href="#projects">Tech</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="blog-post">
+            <header class="post-meta">
+                <time datetime="2026-01-28">January 28, 2026</time>
+                <span class="separator">/</span>
+                <span class="author">By <strong>OGC Editorial Team</strong></span>
+            </header>
+
+            <section id="hero">
+                <h1>Leveling Up the Ecosystem. <span>Together.</span></h1>
+                <p class="lead-text">
+                    The <strong>Open Gaming Collective (OGC)</strong> is a collaborative organization uniting the architects of Linux gaming to build a sustainable, unified future for everyone.
+                </p>
+            </section>
+
+            <section id="about">
+                <h2>The Mission</h2>
+                <p>For too long, the Linux gaming ecosystem has been fragmented. Individual distributions have spent countless hours duplicating efforts on kernel patches, input tooling, and essential packages. The OGC changes the game by centralizing efforts around critical components like <code>gamescope</code> and hardware drivers.</p>
+                
+                <aside class="highlight-box">
+                    <p><em>"Distros can now focus on the features and experience that make them unique, rather than repeating the tasks that are the same. In short: we all have <strong>more time to game.</strong>"</em></p>
+                </aside>
+            </section>
+
+            <section id="members">
+                <h2>Founding Members</h2>
+                <div class="member-grid">
+                    <div class="card">
+                        <h3><a href="https://bazzite.gg/" target="_blank">Bazzite & UBlue</a></h3>
+                        <p class="statement">We think the future of Linux Gaming is a collaborative effort forged in mutual interest and friendship and want to do our part to make that happen!</p>
+                        <div class="member-list">
+                            <span class="list-label">Represented by:</span>
+                            <a href="https://github.com/KyleGospo" class="member-tag">KyleGospo</a>
+                            <a href="https://github.com/hikariknight" class="member-tag">HikariKnight</a>
+                            <a href="https://github.com/boukehaarsma23" class="member-tag">bouhaa</a>
+                            <a href="https://github.com/alkazar" class="member-tag">alkazar</a>
+                            <a href="https://github.com/lleyton" class="member-tag">lea</a>
+                            <a href="https://github.com/GildedRoach" class="member-tag">Gilver</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3><a href="https://asus-linux.org/" target="_blank">ASUS Linux</a></h3>
+                        <p class="statement">Our team focuses on Linux for many ASUS hardware. In being part of OGC, we aim to provide seamless, high-quality, and early support for users and developers while collaborating with others and reducing fragmentation. In doing so, we more closely bridge the gap between enthusiast hardware and the mainline kernel.</p>
+                        <div class="member-list">
+                            <span class="list-label">Represented by:</span>
+                            <a href="https://github.com/NeroReflex" class="member-tag">NeroReflex</a>
+                            <a href="https://github.com/kojq" class="member-tag">Sukiru</a>
+                            <a href="https://github.com/dragonnn" class="member-tag">Dragonn</a>
+                            <a href="https://github.com/Ghoul4500" class="member-tag">Ghoul</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3><a href="http://shadowblip.org/" target="_blank">ShadowBlip</a></h3>
+                        <p class="statement">ShadowBlip is a collection of developers focused on enhancing gaming on Linux with handheld and console-like PCs. Our projects are used in many popular gaming distributions such as SteamOS, Nobara, Playtron, and more. As founding members of the Open Gaming Collective, we focus on delivering projects that benefit the whole gaming on Linux ecosystem.</p>
+                        <div class="member-list">
+                            <span class="list-label">Represented by:</span>
+                            <a href="https://github.com/ShadowApex" class="member-tag">ShadowApex</a>
+                            <a href="https://github.com/pastaq" class="member-tag">pastaq</a>
+                            <a href="https://github.com/samsagax" class="member-tag">Samsagax</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3><a href="https://pika-os.com/" target="_blank">PikaOS</a></h3>
+                        <p class="statement">One of our goals at Pika is to improve gaming accessibility and performance on Linux, with a particular focus on better support and representation for Debian-based distributions within the gaming ecosystem. The OGC is a great place to further these goals and really maximise and contribute to the great work done by Linux gaming community as a whole.</p>
+                        <div class="member-list">
+                            <span class="list-label">Represented by:</span>
+                            <a href="https://github.com/ferrreo" class="member-tag">Ferreo</a>
+                            <a href="https://github.com/sythezn" class="member-tag">SytheZN</a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3><a href="https://fyralabs.com/" target="_blank">Fyra Labs</a></h3>
+                        <p class="statement">Fyra wants to help bring gaming components to the Fedora ecosystem, and a more performant kernel to our users.</p>
+                        <div class="member-list">
+                            <span class="list-label">Represented by:</span>
+                            <a href="https://github.com/nothingneko" class="member-tag">nothingneko</a>
+                            <a href="https://github.com/noelmiller" class="member-tag">Noel Miller</a>
+                        </div>
+                    </div>
+
+                    <div class="card full-width">
+                        <h3>Strategic Partners & Core Contributors</h3>
+                        <p class="statement" style="font-style: normal; margin-bottom: 1.5rem;">Collaborating with <strong>ChimeraOS</strong>, <strong>Nobara</strong>, <strong>Playtron</strong>, and <strong>CachyOS</strong> to maintain the core plumbing of the ecosystem.</p>
+                        <div class="member-list">
+                            <a href="https://github.com/GloriousEggroll" class="member-tag">GloriousEggroll</a>
+                            <a href="https://github.com/superm1" class="member-tag">superm1</a>
+                            <a href="https://github.com/hphilm" class="member-tag">hphilm</a>
+                            <a href="https://github.com/justinweiss" class="member-tag">justinweiss</a>
+                            <a href="https://github.com/LukeShortCloud" class="member-tag">LukeShortCloud</a>
+                            <a href="https://github.com/ruineka" class="member-tag">ruineka</a>
+                            <a href="https://github.com/JustRadical" class="member-tag">JustRadical</a>
+                            <a href="https://github.com/Owen-sz" class="member-tag">Owen-sz</a>
+                            <a href="https://github.com/tulilirockz" class="member-tag">tulilirockz</a>
+                            <a href="https://github.com/R1kaB3rN" class="member-tag">R1kaB3rN</a>
+                            <a href="https://github.com/xXJSONDeruloXx" class="member-tag">xXJSONDeruloXx</a>
+                            <a href="https://github.com/LionHeartP" class="member-tag">LionHeartP</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects">
+                <h2>Shared Technical Pillars</h2>
+                <p>The OGC maintains the plumbing so you can enjoy the play. Our shared efforts focus on:</p>
+                <ul class="custom-list">
+                    <li><strong>Input Management</strong> — <code>InputPlumber</code> and <code>OpenGamepadUI</code> provide a unified controller experience across all handhelds.</li>
+                    <li><strong>Power Tuning</strong> — <code>PowerStation</code> integration for precise thermal and TDP control.</li>
+                    <li><strong>The OGC Kernel</strong> — A custom-tuned kernel (featuring CachyOS tweaks) launching in <strong>UM44</strong> and beyond.</li>
+                    <li><strong>Graphics Stack</strong> — Centralized maintenance of <code>Mesa</code> and <code>Gamescope</code> for maximum frame rates.</li>
+                </ul>
+            </section>
+        </article>
+    </main>
+
+    <footer class="site-footer mesh-bg">
+        <div class="container">
+            <p class="footer-brand">Open Gaming Collective 2026</p>
+            <a href="https://github.com/OpenGamingCollective" class="github-btn">View on GitHub</a>
+        </div>
+    </footer>
+
+</body>
+</html>

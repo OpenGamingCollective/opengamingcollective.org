@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MemberCard from '../components/MemberCard.astro';
+import DownloadCard from '../components/DownloadCard.astro';
+import PageSection from '../components/PageSection.astro';
+import { downloads, members, partners } from "../data/site";
+---
+
+<Layout title="Open Gaming Collective | The Future of Linux Gaming">
+  <section id="hero">
+    <h1>Leveling Up the Ecosystem, <span>Together.</span></h1>
+    <p class="lead-text">
+      The <strong>Open Gaming Collective (OGC)</strong> is building a
+      <strong>unified</strong> set of gaming-focused components used across
+      the Linux ecosystem.
+    </p>
+  </section>
+
+  <PageSection id="about" title="The Mission">
+    <p>
+      Open Gaming Collective (OGC) is a working group for organizations and
+      individuals interested in improving the open source gaming ecosystem.
+      The mission is to provide a collaborative framework for upstream
+      changes to the various gaming components that will benefit all
+      projects.
+    </p>
+
+    <aside class="highlight-box">
+      <p>
+        <em
+          >"Distros can now focus on the features and experience that make
+          them unique, rather than repeating the tasks that are the same. In
+          short: we all have <strong>more time to game.</strong>"</em
+        >
+      </p>
+    </aside>
+  </PageSection>
+
+  <PageSection id="members" title="Founding Members">
+    <div class="member-grid">
+      {members.map((member) => (
+        <MemberCard {...member} />
+      ))}
+      <MemberCard {...partners} fullWidth={true} isPartner={true} />
+    </div>
+  </PageSection>
+
+  <PageSection
+    id="projects"
+    title="Shared Technical Pillars"
+    lead='OGC focuses on the foundational layers of the Linux gaming stack. We host shared components, agreed upon by the members, for all to use, with an "Upstream First" philosophy.'
+  >
+    <p><strong>Some of the projects we have in mind:</strong></p>
+    <ul class="custom-list">
+      <li>
+        <a
+          href="https://github.com/OpenGamingCollective/linux"
+          target="_blank"
+          rel="noopener noreferrer"
+          >The OGC Kernel</a
+        >
+        — a shared gaming-focused kernel
+      </li>
+      <li>
+        A downstream fork of Gamescope that expands hardware support to more
+        devices
+      </li>
+    </ul>
+
+    <aside class="highlight-box">
+      <p>
+        <strong>"Upstream First"</strong> is a rigorous technical policy.
+        Any code produced or improved by OGC is intended to live in the
+        original source project (e.g, the official Mesa repository) rather
+        than being maintained as a permanent "patch" or "fork". This enables
+        rapid development while ensuring the long-term health of Linux
+        gaming.
+      </p>
+    </aside>
+  </PageSection>
+
+  <PageSection
+    id="downloads"
+    title="Get an OGC-powered OS"
+    lead="Experience the future of Linux gaming today. Download a distribution powered by OGC components."
+  >
+    <div class="member-grid">
+      {downloads.map((dl) => (
+        <DownloadCard {...dl} />
+      ))}
+    </div>
+    <aside class="highlight-box secondary-callout">
+      <p>
+        <strong>Looking for a bootable USB solution?</strong> We don't have a recommended unified bootable USB creator yet, but <a href="https://github.com/FyraLabs/moonshot" target="_blank" rel="noopener noreferrer"><strong>Moonshot</strong></a> by Fyra Labs is planned to fill this role in the future.
+      </p>
+    </aside>
+  </PageSection>
+</Layout>

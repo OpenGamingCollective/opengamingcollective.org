@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { marked } from 'marked';
+
+const governanceDocUrl =
+  'https://raw.githubusercontent.com/OpenGamingCollective/organization-governance/main/governance.md';
+
+let markdown = '';
+
+try {
+  const response = await fetch(governanceDocUrl);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch governance markdown: ${response.status}`);
+  }
+  markdown = await response.text();
+  // Strip out HackMD specific markup which doesn't parse cleanly
+  markdown = markdown.replace(/^>\[name=.*$/gm, '');
+} catch (error) {
+  console.error(error);
+  markdown = `# Governance\n\nThe governance document is currently unavailable.\n\nYou can try again later, or read it directly at:\n\n- ${governanceDocUrl}`;
+}
+
+const htmlContent = marked.parse(markdown);
+---
+
+<Layout title="Governance | Open Gaming Collective">
+  <section id="governance-doc" class="page-section">
+    <div class="card markdown-content">
+      <div set:html={htmlContent} />
+    </div>
+  </section>
+</Layout>

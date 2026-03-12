@@ -1,0 +1,105 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description =
+    "A collaborative working group building a unified set of gaming-focused components for the Linux ecosystem. Focused on upstream-first development.",
+  canonical,
+  ogImage = "/social-preview.webp"
+} = Astro.props;
+
+const siteUrl = Astro.site ?? new URL("https://opengamingcollective.org");
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
+const ogImageUrl = new URL(ogImage, siteUrl).toString();
+
+const plausibleSrc =
+  import.meta.env.PUBLIC_PLAUSIBLE_SRC ??
+  "https://plausible.fyralabs.com/js/pa-Av8t5p_IhtWvSrWMuykqq.js";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="Linux Gaming, OGC, Open Gaming Collective, SteamOS, Bazzite, Universal Blue, Gamescope, Linux Kernel"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:type" content="image/webp" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImageUrl} />
+
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#4a3aff"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#00e1ff"
+    />
+
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2017%205.6%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M2.17%204.77q-.62%200-1.11-.28-.5-.3-.78-.83-.28-.54-.28-1.27%200-.74.28-1.27.29-.54.78-.82.5-.3%201.11-.3.63%200%201.12.3.5.28.78.82.28.53.28%201.27t-.28%201.27q-.29.53-.78.83-.5.28-1.12.28zm0-.84q.36%200%20.64-.18.27-.18.43-.52.15-.35.15-.84%200-.5-.15-.83-.16-.35-.43-.53-.28-.18-.64-.18-.35%200-.63.18-.27.18-.43.53-.15.34-.15.83%200%20.5.15.84.16.34.43.52.28.18.63.18zm4.94.84q-.65%200-1.15-.3-.5-.3-.77-.83-.28-.53-.28-1.25%200-.74.29-1.27.28-.54.78-.83.5-.29%201.12-.29.4%200%20.74.12.35.12.62.33.28.22.45.52.17.3.22.66h-.97q-.04-.18-.13-.32-.08-.15-.22-.25-.13-.1-.3-.16-.18-.05-.39-.05-.38%200-.67.19-.28.18-.43.53-.15.34-.15.82%200%20.48.16.82.15.35.43.53.28.19.68.19.32%200%20.56-.12.25-.12.38-.34.14-.23.14-.52l.23.02h-1.23v-.73h1.94v.6q0%20.57-.27%201-.26.44-.72.69-.46.24-1.06.24zm4.84%200q-.63%200-1.13-.28-.5-.3-.78-.83-.29-.54-.29-1.27%200-.74.29-1.27.28-.54.78-.83.5-.29%201.13-.29.4%200%20.75.13.35.12.62.34.27.22.44.54.17.31.22.7h-.96q-.04-.2-.13-.37-.1-.16-.23-.27-.14-.1-.32-.16-.17-.06-.38-.06-.4%200-.67.19-.28.19-.43.53-.14.35-.14.82t.14.82q.15.34.43.53t.67.19q.21%200%20.38-.06.18-.05.31-.16.14-.11.23-.27.1-.16.14-.36h.96q-.05.38-.22.7-.17.3-.44.53-.27.22-.62.35-.34.11-.75.11z%22%2F%3E%3Cpath%20fill%3D%22%2300f2ff%22%20d%3D%22M17%204.86v.7h-3v-.7z%22%2F%3E%3C%2Fsvg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      is:inline
+      async
+      src={plausibleSrc}
+    ></script>
+    <script is:inline>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script>
+  </head>
+  <body>
+    <Header />
+    <main class="container">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,11 +1,24 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
 export default defineConfig({
-  // GitHub Pages serves this site via a custom domain, so `base` stays unset.
   site: 'https://opengamingcollective.org',
   devToolbar: {
     enabled: false
+  },
+  vite: {
+    build: {
+      rollupOptions: {
+        onwarn(warning, defaultHandler) {
+          if (
+            warning.code === 'UNUSED_EXTERNAL_IMPORT' &&
+            warning.message.includes('@astrojs/internal-helpers/remote')
+          ) {
+            return;
+          }
+
+          defaultHandler(warning);
+        }
+      }
+    }
   }
 });

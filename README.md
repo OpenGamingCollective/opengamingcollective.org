@@ -5,8 +5,8 @@ Site for <https://opengamingcollective.org>, built with Astro and deployed to Gi
 ## Stack
 
 - Astro 6 (static output)
-- Minimal runtime dependency footprint (`astro` in production, `@astrojs/check` and `typescript` for validation)
-- Standard GitHub Pages Actions workflow (`checkout`, `configure-pages`, `setup-node`, `upload-pages-artifact`, `deploy-pages`)
+- Single direct dependency: `astro`
+- GitHub Pages Actions workflow using the current Pages action line
 
 ## Local Development
 
@@ -15,7 +15,7 @@ npm ci
 npm run dev
 ```
 
-Use `npm run check` for Astro's type and content validation.
+Use Node 22.12.0 or newer.
 
 ## Build
 
@@ -52,9 +52,10 @@ Current default:
 Pushes to `main` trigger [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which:
 
 1. Installs dependencies with `npm ci`
-2. Builds the site with `npm run build`
-3. Uploads the generated `dist/` artifact
-4. Deploys to GitHub Pages
+2. Audits production dependencies with `npm audit --omit=dev`
+3. Builds the site with `npm run build`
+4. Uploads the generated `dist/` artifact
+5. Deploys to GitHub Pages
 
 The production target is the custom domain, not the repository Pages path. Astro is configured with `site: https://opengamingcollective.org` and no `base`, which is the documented setup for a GitHub Pages custom domain.
 

@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection, render } from "astro:content";
+
+const governanceEntries = await getCollection("governance");
+const governanceEntry = governanceEntries[0];
+
+if (!governanceEntry) {
+  throw new Error(
+    "Missing local governance content. Run `npm run sync:governance` to refresh the snapshot."
+  );
+}
+
+const { Content } = await render(governanceEntry);
+---
+
+<Layout title="Governance | Open Gaming Collective">
+  <section id="governance-doc" class="page-section">
+    <div class="card markdown-shell">
+      <article class="markdown-content text-block">
+        <Content />
+      </article>
+    </div>
+  </section>
+</Layout>

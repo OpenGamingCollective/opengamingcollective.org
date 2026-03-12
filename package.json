@@ -1,6 +1,26 @@
 {
-  "dependencies": {},
+  "name": "opengamingcollective-org",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "packageManager": "npm@11.11.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "check": "astro check",
+    "prebuild": "node ./scripts/sync-governance.mjs",
+    "build": "astro build",
+    "preview": "astro preview",
+    "sync:governance": "node ./scripts/sync-governance.mjs",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^6.0.3"
+  },
   "devDependencies": {
-    "prettier": "3.8.1"
+    "@astrojs/check": "^0.9.7",
+    "typescript": "^5.9.3"
   }
 }

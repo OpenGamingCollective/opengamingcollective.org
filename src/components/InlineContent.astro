@@ -1,0 +1,27 @@
+---
+import type { InlineSegment } from "../data/types";
+
+interface Props {
+  segments: InlineSegment[];
+}
+
+const { segments } = Astro.props;
+---
+
+{segments.map((segment) => (
+  segment.type === "text" ? (
+    segment.text
+  ) : segment.type === "strong" ? (
+    <strong>{segment.text}</strong>
+  ) : segment.strong ? (
+    <strong>
+      <a href={segment.href} target="_blank" rel="noopener noreferrer">
+        {segment.label}
+      </a>
+    </strong>
+  ) : (
+    <a href={segment.href} target="_blank" rel="noopener noreferrer">
+      {segment.label}
+    </a>
+  )
+))}

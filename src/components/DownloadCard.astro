@@ -1,0 +1,14 @@
+---
+interface Props {
+  title: string;
+  statement: string;
+  url: string;
+  buttonText: string;
+}
+const { title, statement, url, buttonText } = Astro.props;
+---
+<div class="card">
+  <h3>{title}</h3>
+  <p class="statement">{statement}</p>
+  <a href={url} target="_blank" rel="noopener noreferrer" class="github-btn card-action">{buttonText}</a>
+</div>

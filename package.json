@@ -13,9 +13,15 @@
     "build": "astro build",
     "preview": "astro preview",
     "sync:governance": "node ./scripts/sync-governance.mjs",
-    "astro": "astro"
+    "astro": "astro",
+    "upgrade:astro": "npx @astrojs/upgrade --all",
+    "format": "prettier --write ."
   },
   "dependencies": {
-    "astro": "6.0.4"
+    "astro": "^6.1.9"
+  },
+  "devDependencies": {
+    "@astrojs/upgrade": "^0.7.2",
+    "prettier": "^3.8.0"
   }
 }

@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MemberCard from '../components/MemberCard.astro';
+import PageSection from '../components/PageSection.astro';
+import { members, partners } from "../data/site";
+---
+
+<Layout title="Collective | Open Gaming Collective">
+  <section id="hero" class="hero">
+    <div class="text-block">
+      <h1>Founding Members & Partners</h1>
+      <p class="lead-text">
+        The Open Gaming Collective brings together organizations and individuals
+        who believe in <strong>collaboration over competition</strong> in the Linux
+        gaming ecosystem.
+      </p>
+    </div>
+  </section>
+
+  <PageSection id="members" title="Founding Members">
+    <div class="member-grid">
+      {members.map((member) => (
+        <MemberCard {...member} />
+      ))}
+    </div>
+  </PageSection>
+
+  <PageSection id="partners" title="Strategic Partners">
+    <div class="partners-grid">
+      <MemberCard {...partners} fullWidth={true} isPartner={true} />
+    </div>
+  </PageSection>
+</Layout>

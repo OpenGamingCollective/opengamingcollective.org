@@ -8,8 +8,10 @@ interface Props {
 const { id, title, lead } = Astro.props;
 ---
 
-<section id={id} class="page-section">
-  <h2 class="section-title">{title}</h2>
-  {lead && <p class="lead-text">{lead}</p>}
+<section id={id} class="section">
+  <div class="section-head">
+    <h2>{title}</h2>
+  </div>
+  {lead && <p class="lead">{lead}</p>}
   <slot />
 </section>

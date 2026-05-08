@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DownloadCard from '../components/DownloadCard.astro';
+import PageSection from '../components/PageSection.astro';
+import { downloads } from "../data/site";
+---
+
+<Layout title="Downloads | Open Gaming Collective">
+  <section id="hero" class="hero">
+    <div class="text-block">
+      <h1>Get an OGC-Powered OS</h1>
+      <p class="lead-text">
+        Experience the future of Linux gaming today. Download a distribution
+        powered by OGC components.
+      </p>
+    </div>
+  </section>
+
+  <PageSection id="downloads" title="Available Distributions">
+    <div class="member-grid">
+      {downloads.map((dl) => (
+        <DownloadCard {...dl} />
+      ))}
+    </div>
+    <div class="text-block">
+      <aside class="highlight-box secondary-callout">
+        <p>
+          <strong>Looking for a bootable USB solution?</strong> We don't have a
+          recommended unified bootable USB creator yet, but <a
+            href="https://github.com/FyraLabs/moonshot"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color: var(--moonshot)"
+            ><strong>Moonshot</strong></a
+          > by Fyra Labs is planned to fill this role in the future.
+        </p>
+      </aside>
+    </div>
+  </PageSection>
+</Layout>

@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageSection from '../components/PageSection.astro';
+
+const mentors = [
+  { name: "Kyle Gospodnetich", github: "KyleGospo", areas: ["Linux Kernel", "Bazzite", "OGC Kernel"] },
+  { name: "NeroReflex", github: "NeroReflex", areas: ["Linux Kernel", "ASUS Hardware", "Device Drivers"] },
+  { name: "Sukiru", github: "kojq", areas: ["HID Drivers", "Gamepad Integration", "Gamescope"] },
+  { name: "pastaq", github: "pastaq", areas: ["Gamescope", "Steam Integration", "Session Management"] },
+];
+---
+
+<Layout title="Mentorship | Open Gaming Collective">
+  <section class="hero">
+    <h1>Mentorship <span>Program</span></h1>
+    <p class="lead">
+      Connecting experienced developers with newcomers looking to contribute to the Linux gaming ecosystem. Starting with kernel development, expanding across the stack.
+    </p>
+  </section>
+
+  <PageSection id="about" title="About">
+    <div class="member-grid">
+      <div class="card">
+        <h3>For Mentees</h3>
+        <p class="statement">Get patch reviews, pair-programming sessions, and guidance on bisecting issues. Reach out via <a href="mailto:mentorship@opengamingcollective.org">email</a>.</p>
+      </div>
+      <div class="card">
+        <h3>For Mentors</h3>
+        <p class="statement">No obligation to volunteer — only when you choose. List your areas of expertise on this page so mentees can reach out specifically.</p>
+      </div>
+    </div>
+  </PageSection>
+
+  <PageSection id="mentors" title="Mentors">
+    <div class="member-grid">
+      {mentors.map((m) => (
+        <div class="card">
+          <h3>{m.name}</h3>
+          <a href={`https://github.com/${m.github}`} target="_blank" rel="noopener noreferrer" class="member-tag" style="display:inline-block; margin-bottom: 0.5rem;">@{m.github}</a>
+          <div class="member-list">
+            {m.areas.map((a) => <span class="area-tag">{a}</span>)}
+          </div>
+        </div>
+      ))}
+    </div>
+    <p class="note">More mentors welcome. Reach out via the mentorship email to volunteer.</p>
+  </PageSection>
+
+  <PageSection id="resources" title="Resources">
+    <ul class="custom-list">
+      <li><a href="https://github.com/OpenGamingCollective/organization-governance" target="_blank" rel="noopener noreferrer">Governance Guidelines</a> — mentor & mentee program details</li>
+      <li><a href="https://discord.gg/4K2pZ6abQm" target="_blank" rel="noopener noreferrer">Discord</a> — real-time discussion for mentors and mentees</li>
+      <li>Articles library — coming soon to the OGC GitHub org</li>
+    </ul>
+  </PageSection>
+</Layout>

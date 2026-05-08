@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageSection from '../components/PageSection.astro';
+
+const projects = [
+  { name: "OGC Kernel", repo: "linux", description: "Linux kernel stable tree mirror with OGC patches for gaming workloads.", language: "C", url: "https://github.com/OpenGamingCollective/linux" },
+  { name: "Kernel Packages", repo: "kernel-packages", description: "Build system providing signed OCI images of kernel packages for major distributions.", language: "Shell", url: "https://github.com/OpenGamingCollective/kernel-packages" },
+  { name: "Kernel Configurator", repo: "kernel-configurator", description: "GitHub Action for modifying kernel CONFIG files with minimal necessary changes.", language: "JS", url: "https://github.com/OpenGamingCollective/kernel-configurator" },
+  { name: "Gamescope", repo: "gamescope", description: "SteamOS compositing window manager. OGC fork expanding hardware support.", language: "C++", url: "https://github.com/OpenGamingCollective/gamescope" },
+  { name: "Gamescope Session", repo: "gamescope-session", description: "Gamescope-based user session for streamlined gaming environments.", language: "Shell", url: "https://github.com/OpenGamingCollective/gamescope-session" },
+  { name: "Gamescope Session - Steam", repo: "gamescope-session-steam", description: "Gamescope session integration with Steam.", language: "Shell", url: "https://github.com/OpenGamingCollective/gamescope-session-steam" },
+  { name: "Gamescope Session - OGUI", repo: "gamescope-session-ogui-steam", description: "Gamescope session for OpenGamepadUI in overlay mode with Steam.", language: "Shell", url: "https://github.com/OpenGamingCollective/gamescope-session-ogui-steam" },
+  { name: "Gamescope Session - OpenGamepadUI", repo: "gamescope-session-opengamepadui", description: "Gamescope session for OpenGamepadUI.", language: "Shell", url: "https://github.com/OpenGamingCollective/gamescope-session-opengamepadui" },
+  { name: "ScopeBuddy", repo: "ScopeBuddy", description: "Manager script to make gamescope easier to use on desktop.", language: "Shell", url: "https://github.com/OpenGamingCollective/ScopeBuddy" },
+  { name: "asusctl", repo: "asusctl", description: "Daemon and tools to control ASUS devices.", language: "Rust", url: "https://github.com/OpenGamingCollective/asusctl" },
+  { name: "SteamOS Manager", repo: "steamos-manager", description: "Management daemon for SteamOS configurations.", language: "Rust", url: "https://github.com/OpenGamingCollective/steamos-manager" },
+  { name: "Xonedo", repo: "xonedo", description: "Linux kernel driver for Xbox One and Series X|S accessories.", language: "C", url: "https://github.com/OpenGamingCollective/xonedo" },
+  { name: "Cardwire", repo: "cardwire", description: "GPU Manager for Linux using eBPF LSM hooks.", language: "Rust", url: "https://github.com/OpenGamingCollective/cardwire" },
+  { name: "Mesa Patches", repo: "mesa", description: "Repository for patches against Mesa.", language: "C", url: "https://github.com/OpenGamingCollective/mesa" },
+  { name: "WirePlumber Patches", repo: "wireplumber", description: "Repository for patches against WirePlumber.", language: "C", url: "https://github.com/OpenGamingCollective/wireplumber" },
+  { name: "Reversing", repo: "reversing", description: "Data dumps and information for supporting devices.", language: null, url: "https://github.com/OpenGamingCollective/reversing" },
+];
+---
+
+<Layout title="Projects | Open Gaming Collective">
+  <section class="hero">
+    <h1>Projects</h1>
+    <p class="lead">
+      OGC manages shared components and collaborative projects benefiting the Linux gaming ecosystem. All follow an "Upstream First" philosophy.
+    </p>
+  </section>
+
+  <PageSection id="projects-list" title="Managed Projects">
+    <div class="member-grid">
+      {projects.map((p) => (
+        <a href={p.url} target="_blank" rel="noopener noreferrer" class="card project-card">
+          <div class="project-header">
+            <h3>{p.name}</h3>
+            {p.language && <span class="lang-tag">{p.language}</span>}
+          </div>
+          <p class="project-desc">{p.description}</p>
+          <span class="repo-path"><{p.repo} /></span>
+        </a>
+      ))}
+    </div>
+  </PageSection>
+</Layout>

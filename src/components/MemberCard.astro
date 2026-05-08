@@ -11,13 +11,20 @@ interface Props {
 }
 const { title, statement, members, fullWidth = false, isPartner = false } = Astro.props;
 ---
-<div class={`card ${fullWidth ? 'full-width' : ''}`}>
+
+<div class={`card ${fullWidth ? 'full-width' : ''} ${isPartner ? 'card-partner' : ''}`}>
   <h3>
     <InlineContent segments={title} />
   </h3>
-  <p class:list={["statement", { "statement-partner": isPartner }]}>
-    <InlineContent segments={statement} />
-  </p>
+  {isPartner ? (
+    <div class="partner-statement">
+      <InlineContent segments={statement} />
+    </div>
+  ) : (
+    <blockquote class="statement">
+      <InlineContent segments={statement} />
+    </blockquote>
+  )}
   <div class="member-list">
     {!isPartner && <span class="list-label">Represented by:</span>}
     {members.map(member => (

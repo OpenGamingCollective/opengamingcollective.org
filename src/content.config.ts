@@ -4,10 +4,10 @@ import { glob } from "astro/loaders";
 const governance = defineCollection({
   loader: glob({
     base: "./src/content/governance",
-    pattern: "**/*.md"
-  })
+    pattern: "**/*.md",
+  }),
 });
 
 export const collections = {
-  governance
+  governance,
 };

@@ -56,4 +56,4 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Run Accessibility Audit
-        run: pnpm test
+        run: pnpm test:ci

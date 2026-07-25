@@ -12,16 +12,22 @@
     "prebuild": "node ./scripts/sync-governance.mjs",
     "build": "astro build",
     "preview": "astro preview",
+    "preview:test": "pnpm run build && astro preview --port 8787",
     "sync:governance": "node ./scripts/sync-governance.mjs",
     "astro": "astro",
     "upgrade:astro": "pnpm dlx @astrojs/upgrade --all",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test": "playwright install --with-deps chromium && playwright test",
+    "test:ci": "playwright test"
   },
   "dependencies": {
     "astro": "^6.1.9"
   },
   "devDependencies": {
     "@astrojs/upgrade": "^0.7.2",
+    "@axe-core/playwright": "^4.12.1",
+    "@playwright/test": "^1.62.0",
+    "@types/node": "^26.1.1",
     "prettier": "^3.8.0"
   }
 }

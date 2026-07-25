@@ -36,6 +36,7 @@
     --bg-rgb: 11 11 18;
     --text: #f8fafc;
     --text-muted: #94a3b8;
+    --accent: #00d5dd;
     --accent-glow: rgb(0 242 255 / 0.25);
     --accent-soft: rgb(0 242 255 / 0.08);
     --card-bg: #13131c;
@@ -400,6 +401,12 @@ code {
 
 .highlight-box a {
   color: #006d72;
+}
+
+@media (prefers-color-scheme: dark) {
+  .highlight-box a {
+    color: #00d5dd;
+  }
 }
 
 .secondary-callout {

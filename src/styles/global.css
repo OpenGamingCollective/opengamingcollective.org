@@ -420,6 +420,25 @@ code {
     filter 0.2s ease;
 }
 
+.discord-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--space-3);
+  margin-left: var(--space-1);
+  padding: 0.8rem 1.6rem;
+  background: var(--accent);
+  color: var(--btn-text) !important;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+  text-align: center;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
 .card-action {
   margin-top: auto;
 }

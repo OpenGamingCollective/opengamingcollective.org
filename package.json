@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "version": "0.0.1",
-  "packageManager": "npm@11.11.1",
+  "packageManager": "pnpm@10.11.0",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -14,7 +14,7 @@
     "preview": "astro preview",
     "sync:governance": "node ./scripts/sync-governance.mjs",
     "astro": "astro",
-    "upgrade:astro": "npx @astrojs/upgrade --all",
+    "upgrade:astro": "pnpm dlx @astrojs/upgrade --all",
     "format": "prettier --write ."
   },
   "dependencies": {

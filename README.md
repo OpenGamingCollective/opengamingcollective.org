@@ -11,8 +11,8 @@ Site for <https://opengamingcollective.org>, built with Astro and deployed to Gi
 ## Local Development
 
 ```bash
-npm ci
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 Use Node 22.12.0 or newer.
@@ -20,7 +20,7 @@ Use Node 22.12.0 or newer.
 ## Build
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 ## Governance Content
@@ -30,7 +30,7 @@ The governance page is built from a versioned local snapshot at `src/content/gov
 Refresh that snapshot from the upstream governance repository with:
 
 ```bash
-npm run sync:governance
+pnpm run sync:governance
 ```
 
 This keeps production builds deterministic while preserving the upstream source of truth.
@@ -44,16 +44,19 @@ Plausible is loaded in [`src/layouts/Layout.astro`](src/layouts/Layout.astro) us
 Current default:
 
 ```html
-<script async src="https://plausible.fyralabs.com/js/pa-Av8t5p_IhtWvSrWMuykqq.js"></script>
+<script
+  async
+  src="https://plausible.fyralabs.com/js/pa-Av8t5p_IhtWvSrWMuykqq.js"
+></script>
 ```
 
 ## Deployment
 
 Pushes to `main` trigger [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which:
 
-1. Installs dependencies with `npm ci`
-2. Audits production dependencies with `npm audit --omit=dev`
-3. Builds the site with `npm run build`
+1. Installs dependencies with `pnpm install --frozen-lockfile`
+2. Audits production dependencies with `pnpm audit --prod`
+3. Builds the site with `pnpm run build`
 4. Uploads the generated `dist/` artifact
 5. Deploys to GitHub Pages
 

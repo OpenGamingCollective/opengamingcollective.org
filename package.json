@@ -21,13 +21,18 @@
     "test:ci": "playwright test"
   },
   "dependencies": {
-    "astro": "^6.1.9"
+    "astro": "^7.1.0"
   },
   "devDependencies": {
-    "@astrojs/upgrade": "^0.7.2",
+    "@astrojs/upgrade": "^0.7.3",
     "@axe-core/playwright": "^4.12.1",
     "@playwright/test": "^1.62.0",
     "@types/node": "^26.1.1",
-    "prettier": "^3.8.0"
+    "prettier": "^3.9.6"
+  },
+  "pnpm": {
+    "overrides": {
+      "sharp": "^0.35.0"
+    }
   }
 }

@@ -158,7 +158,7 @@ export const downloads: DownloadLink[] = [
     title: "PikaOS",
     statement:
       "A Debian-based gaming OS focused on ease of use and performance.",
-    url: "https://wiki.pika-os.com/en/home#downloads",
+    url: "https://pika-os.com/#editions",
     buttonText: "Download PikaOS",
   },
   {

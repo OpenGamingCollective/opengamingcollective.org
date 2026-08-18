@@ -35,7 +35,6 @@
     }
   },
   "dependencies": {
-    "astro": "^7.2.3",
-    "js-yaml": "4.3.1"
+    "astro": "^7.2.3"
   }
 }

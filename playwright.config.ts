@@ -32,9 +32,11 @@ export default defineConfig({
     {
       command: "pnpm run preview:test",
       reuseExistingServer: !isCI,
-      // The timeout of the single build step ran before the accessibility tests.
       timeout: 120 * 1_000,
       url: "http://localhost:8787",
+      env: {
+        PATH: "/home/user/.local/share/pnpm:/home/user/.local/bin:" + (process.env.PATH || ''),
+      },
     },
   ],
 });

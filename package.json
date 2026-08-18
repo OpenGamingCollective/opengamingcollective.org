@@ -20,9 +20,6 @@
     "test": "playwright install --with-deps chromium && playwright test",
     "test:ci": "playwright test"
   },
-  "dependencies": {
-    "astro": "^7.2.3"
-  },
   "devDependencies": {
     "@astrojs/upgrade": "^0.7.3",
     "@axe-core/playwright": "^4.12.1",
@@ -36,5 +33,9 @@
       "nanoid@3": "3.3.18",
       "sharp": "^0.35.0"
     }
+  },
+  "dependencies": {
+    "astro": "^7.2.3",
+    "js-yaml": "4.3.1"
   }
 }

@@ -29,11 +29,13 @@ jobs:
         with:
           repository: OpenGamingCollective/asusctl
           path: vendor/asusctl
+          persist-credentials: false
       - name: Checkout cardwire (docs)
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: OpenGamingCollective/cardwire
           path: vendor/cardwire
+          persist-credentials: false
       - name: Configure Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
       - name: Setup pnpm
@@ -52,11 +54,19 @@ jobs:
       - name: Setup mdBook
         env:
           MDBOOK_VERSION: 0.5.2
+          MDBOOK_SHA256: 084e4342ba564db270108763e404a7d1f309d932651a22484e93c0dc1a071f6d
           MDBOOK_MERMAID_VERSION: 0.17.1
+          MDBOOK_MERMAID_SHA256: 9afcfa5b8463afe606d48595a7ae338564302903e626ea5b6edb8007d29393a5
         run: |
           mkdir -p "$HOME/.local/bin"
-          curl -sSfL "https://github.com/rust-lang/mdBook/releases/download/v${MDBOOK_VERSION}/mdbook-v${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz" | tar -xz -C "$HOME/.local/bin"
-          curl -sSfL "https://github.com/badboy/mdbook-mermaid/releases/download/v${MDBOOK_MERMAID_VERSION}/mdbook-mermaid-v${MDBOOK_MERMAID_VERSION}-x86_64-unknown-linux-gnu.tar.gz" | tar -xz -C "$HOME/.local/bin"
+          curl -sSfL -o "$RUNNER_TEMP/mdbook.tar.gz" \
+            "https://github.com/rust-lang/mdBook/releases/download/v${MDBOOK_VERSION}/mdbook-v${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
+          echo "${MDBOOK_SHA256}  ${RUNNER_TEMP}/mdbook.tar.gz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/mdbook.tar.gz" -C "$HOME/.local/bin"
+          curl -sSfL -o "$RUNNER_TEMP/mdbook-mermaid.tar.gz" \
+            "https://github.com/badboy/mdbook-mermaid/releases/download/v${MDBOOK_MERMAID_VERSION}/mdbook-mermaid-v${MDBOOK_MERMAID_VERSION}-x86_64-unknown-linux-gnu.tar.gz"
+          echo "${MDBOOK_MERMAID_SHA256}  ${RUNNER_TEMP}/mdbook-mermaid.tar.gz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/mdbook-mermaid.tar.gz" -C "$HOME/.local/bin"
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - name: Build project docs
         run: |
